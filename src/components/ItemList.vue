@@ -1,36 +1,37 @@
 <template>
-    <div class="container">
-    <div  v-if="store.loading">
-        Sto caricando i dati
+    <div class="container" v-if="!store.home">
+        <h2 class="text-center">Benvenuto su Boolflix</h2>
     </div>
-        <div class="row" v-if="!store.loading">
-        <h2>Film</h2>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-2 mb-5" v-for="(item, index) in store.filmList" :key="item.id">
-                <ItemComponent :film="item"/>
-            </div>
+    <div class="container" v-else>
+        <div v-if="store.loading">
+            Sto caricando i dati
         </div>
-        <div class="row" v-if="!store.loading">
-        <h2>Film</h2>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-2 mb-5" v-for="(item, index) in store.tvList" :key="item.id">
-                <ItemComponent :film="item"/>
-            </div>
-        </div>
+        <FilmList v-show="store.film" />
+        <SerieList v-show="store.serieTv" />
     </div>
 </template>
 
 <script>
-import {store} from '../store.js'
-import ItemComponent from './ItemComponent.vue';
+import { store } from '../store.js'
+import FilmList from './FilmList.vue';
+import SerieList from './SerieList.vue';
 
-    export default {
+export default {
     name: "ItemList",
-    components: { ItemComponent },
-    data(){
-        return{
+    components: { FilmList, SerieList },
+    data() {
+        return {
             store
 
         }
-    }
+    }, created() {
+        // store.endPointM = '/movie/popular';
+        // store.getFilms();
+        // store.endPointT = '/tv/popular';
+        // store.getTV();
+
+    },
+
 }
 </script>
 
