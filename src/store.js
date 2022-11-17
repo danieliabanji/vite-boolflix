@@ -18,13 +18,7 @@ export const store = reactive({
     home: true,
     film: false,
     serieTv: false,
-
-
-
-
-
-
-
+    page: true,
 
 
 

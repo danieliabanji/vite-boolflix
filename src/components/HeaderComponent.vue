@@ -1,12 +1,13 @@
 <template>
-    <header class="myNavbar">
+    <header class="myNavbar ">
         <div class="mx-4 navbar">
-            <img src="/img/logo1.png" alt="">
-
-            <SectionApp />
+            <div class="d-flex align-items-center mx-2">
+                <a href="#"><img src="/img/logo1.png" alt="logo"></a>
+                <SectionApp @popularSearch="popularSearch" class="mx-5 mt-3" />
+            </div>
 
             <div class="text-end">
-                <AppSearch @titleSearch="titleSearch" @resetSearch="resetSearch" />
+                <AppSearch @filterSearch="filterSearch" @popularSearch="popularSearch" />
             </div>
         </div>
     </header>
@@ -28,7 +29,7 @@ export default {
         }
     },
     methods: {
-        titleSearch() {
+        filterSearch() {
             if (this.store.searchKey !== "") {
                 // AXIOS PER MOVIE
                 axios.get(this.store.apiMovieURL + `?api_key=${this.store.apiKey}&query=${this.store.searchKey}`)
@@ -44,23 +45,25 @@ export default {
                     })
             }
         },
-        resetSearch() {
-            if (this.store.home === true) {
-                // AXIOS PER MOVIE
-                axios.get(this.store.apiMoviePopularURL + `?api_key=${this.store.apiKey}`)
-                    .then((resp) => {
-                        this.store.arrayMovie.results = resp.data.results
-                        console.log(this.store.arrayMovie, "film");
-                    })
-                // AXIOS PER TV
-                axios.get(this.store.apiTvPopularURL + `?api_key=${this.store.apiKey}`)
-                    .then((resp) => {
-                        this.store.arrayTv.results = resp.data.results
-                        console.log(this.store.arrayTv, "serie");
-                    })
-            }
+        popularSearch() {
+            // AXIOS PER MOVIE
+            axios.get(this.store.apiMoviePopularURL + `?api_key=${this.store.apiKey}`)
+                .then((resp) => {
+                    this.store.arrayMovie.results = resp.data.results
+                    console.log(this.store.arrayMovie, "film");
+                })
+            // AXIOS PER TV
+            axios.get(this.store.apiTvPopularURL + `?api_key=${this.store.apiKey}`)
+                .then((resp) => {
+                    this.store.arrayTv.results = resp.data.results
+                    console.log(this.store.arrayTv, "serie");
+                })
         },
-    }
+    },
+    created() {
+
+        this.popularSearch()
+    },
 }
 </script>
 
@@ -83,9 +86,10 @@ header {
     right: 0;
     z-index: 100;
     background: linear-gradient(#000000 20%, #000000ba 75%, #00000000);
+    height: 100px;
 
     img {
-        width: 200px;
+        width: 250px;
     }
 }
 </style>

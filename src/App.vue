@@ -1,6 +1,9 @@
 <template>
   <HeaderComponent />
   <main>
+    <h2 v-if="store.page != false">
+      <WelcomeApp />
+    </h2>
     <ItemList />
     <div v-if="store.errormessage">
       <h1>Ops! Qualcosa è andato storto</h1>
@@ -13,11 +16,13 @@
 import { store } from './store.js'
 import HeaderComponent from './components/HeaderComponent.vue';
 import ItemList from './components/ItemList.vue';
+import WelcomeApp from './components/WelcomeApp.vue'
 
 export default {
   components: {
     HeaderComponent,
-    ItemList
+    ItemList,
+    WelcomeApp
   },
   data() {
     return {
@@ -30,5 +35,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+main {
+  margin-top: 40px;
+}
 </style>

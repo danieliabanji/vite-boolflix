@@ -1,6 +1,7 @@
 <template>
     <div class="container" v-if="!store.home">
-        <h2 class="text-center">Benvenuto su Boolflix</h2>
+        <FilmList v-show="store.film" />
+        <SerieList v-show="store.serieTv" />
     </div>
     <div class="container" v-else>
         <div v-if="store.loading">
@@ -25,10 +26,7 @@ export default {
 
         }
     }, created() {
-        // store.endPointM = '/movie/popular';
-        // store.getFilms();
-        // store.endPointT = '/tv/popular';
-        // store.getTV();
+
 
     },
 

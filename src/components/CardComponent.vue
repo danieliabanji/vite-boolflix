@@ -3,7 +3,8 @@
 
     <div class="front-display ">
         <div class="img-card">
-            <img :src="`${store.imgCard}${result.poster_path} `">
+            <img :src="result.poster_path ? store.imgCard + result.poster_path : 'https://via.placeholder.com/342x500?text=img+null'"
+                :alt="result.title">
         </div>
 
 
@@ -50,8 +51,10 @@ export default {
     },
     data() {
         return {
-            availableFlags: ['en', 'it', 'de', 'es'],
+            availableFlags: ['en', 'it', 'de', 'es', 'uk', 'fr', 'ja', 'nl', 'pt'],
             store,
+            activeIndex: 0,
+            autoscroll: null,
 
 
 
@@ -63,14 +66,12 @@ export default {
         }
     },
     methods: {
-        flagConvertor() {
-            if (this.result.original_language == 'it') {
-                return '../assets/immagini-flag/italia.png'
-            }
-        },
         getImgUrl(imgName) {
             return new URL(`../assets/immagini-flag/${imgName}.png`, import.meta.url).href;
-        }
+        },
+
+
+
     }
 }
 </script>
