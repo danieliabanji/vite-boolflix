@@ -1,15 +1,15 @@
 <template>
-    <div class="container" v-if="!store.home">
-        <FilmList v-show="store.film" />
-        <SerieList v-show="store.serieTv" />
-    </div>
-    <div class="container" v-else>
-        <div v-if="store.loading">
-            Sto caricando i dati
+    <section>
+        <div class="container" v-if="!store.home">
+            <FilmList v-show="store.film" />
+            <SerieList v-show="store.serieTv" />
         </div>
-        <FilmList v-show="store.film" />
-        <SerieList v-show="store.serieTv" />
-    </div>
+        <div class="container" v-else>
+
+            <FilmList v-show="store.film" />
+            <SerieList v-show="store.serieTv" />
+        </div>
+    </section>
 </template>
 
 <script>
