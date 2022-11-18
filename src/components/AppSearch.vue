@@ -5,7 +5,7 @@
                 <input type="text" class="form-control" placeholder="Search name" v-model.trim="store.searchKey">
             </div>
             <div class="col-12">
-                <button class="btn btn-danger" @click="$emit('filterSearch')">Search</button>
+                <button class="btn btn-danger" @click.prevent="$emit('filterSearch')">Search</button>
             </div>
             <div class="col-12">
                 <button type="reset" class="btn btn-danger" @click="$emit('popularSearch')">Reset</button>
