@@ -3,6 +3,8 @@
         <h2>
             Benvenuti su Boolflix
         </h2>
+        <div>
+        </div>
 
         <div>
             <FilmList />

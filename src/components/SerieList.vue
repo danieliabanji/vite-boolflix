@@ -1,8 +1,8 @@
 <template>
-    <div class="row" v-if="!store.loading">
+    <div class="row my-5" v-if="!store.loading">
         <h2>Serie tv</h2>
-        <div class="cards row row-cols-2 row-cols-md-4 g-3">
-            <div class="col m-4" v-for="result in store.arrayTv.results" :key="store.arrayTv.results.id">
+        <div class="cards d-flex g-3">
+            <div class="" v-for="result in store.arrayTv.results" :key="store.arrayTv.results.id">
                 <CardComponent :result="result" />
             </div>
         </div>
@@ -27,5 +27,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.cards {
+    overflow-x: auto;
+}
 </style>

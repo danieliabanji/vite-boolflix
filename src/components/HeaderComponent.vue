@@ -29,40 +29,18 @@ export default {
         }
     },
     methods: {
-        filterSearch() {
-            if (this.store.searchKey !== "") {
-                // AXIOS PER MOVIE
-                axios.get(this.store.apiMovieURL + `?api_key=${this.store.apiKey}&query=${this.store.searchKey}`)
-                    .then((resp) => {
-                        this.store.arrayMovie.results = resp.data.results
-                        console.log(this.store.arrayMovie, "film");
-                    })
-                // AXIOS PER TV
-                axios.get(this.store.apiTvURL + `?api_key=${this.store.apiKey}&query=${this.store.searchKey}`)
-                    .then((resp) => {
-                        this.store.arrayTv.results = resp.data.results
-                        console.log(this.store.arrayTv, "serie");
-                    })
-            }
-        },
         popularSearch() {
-            // AXIOS PER MOVIE
-            axios.get(this.store.apiMoviePopularURL + `?api_key=${this.store.apiKey}`)
-                .then((resp) => {
-                    this.store.arrayMovie.results = resp.data.results
-                    console.log(this.store.arrayMovie, "film");
-                })
-            // AXIOS PER TV
-            axios.get(this.store.apiTvPopularURL + `?api_key=${this.store.apiKey}`)
-                .then((resp) => {
-                    this.store.arrayTv.results = resp.data.results
-                    console.log(this.store.arrayTv, "serie");
-                })
+            store.popularSearch()
         },
+        filterSearch() {
+            store.filterSearch()
+        }
+
+
     },
     created() {
 
-        this.popularSearch()
+        store.popularSearch()
     },
 }
 </script>

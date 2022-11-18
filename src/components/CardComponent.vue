@@ -53,8 +53,6 @@ export default {
         return {
             availableFlags: ['en', 'it', 'de', 'es', 'uk', 'fr', 'ja', 'nl', 'pt'],
             store,
-            activeIndex: 0,
-            autoscroll: null,
 
 
 
@@ -85,7 +83,7 @@ export default {
     cursor: pointer;
     filter: drop-shadow(0 3px 5px rgb(0, 0, 0));
     color: white;
-    width: 342px;
+    width: 300px;
     background-color: black;
 
     &:hover .img-card {
@@ -112,7 +110,7 @@ export default {
     left: 0;
     right: 0;
     max-height: 90%;
-    width: 342px;
+    width: 300px;
     background-color: rgba(0, 0, 0, 0.822);
     color: rgb(211, 211, 211);
     font-size: 0.8rem;

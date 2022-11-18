@@ -1,8 +1,8 @@
 <template>
     <div class="row" v-if="!store.loading">
         <h2>Film</h2>
-        <div class=" cards row row-cols-2 row-cols-md-4 g-3">
-            <div class="col m-4" v-for="result in store.arrayMovie.results" :key="store.arrayMovie.results.id">
+        <div class=" cards d-flex">
+            <div v-for="result in store.arrayMovie.results" :key="store.arrayMovie.results.id">
                 <CardComponent :result="result" />
             </div>
         </div>
@@ -27,5 +27,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use '../assets/styles/partials/variables' as *;
 
+.cards {
+    overflow-x: auto;
+
+
+}
 </style>
